@@ -55,5 +55,6 @@
     font-family: "Comic Sans MS";
     font-size: large;
     display: flex;
+    background-color: whitesmoke;
   }
 </style>
