@@ -6,6 +6,7 @@
   import * as DDM from "$lib/components/ui/dropdown-menu";
   import { Toaster, toast } from "svelte-sonner";
   import { onMount } from "svelte";
+  import Readers from "$lib/components/Readers.svelte";
 
   const logout = () => {
     localStorage.removeItem("user");
@@ -18,15 +19,17 @@
     });
   };
 
-   onMount(()=>{
-    if(localStorage.getItem("user")) user.set(JSON.parse(localStorage.getItem("user")!));
-   })
+  onMount(() => {
+    if (localStorage.getItem("user"))
+      user.set(JSON.parse(localStorage.getItem("user")!));
+  });
 </script>
 
 <Toaster />
 <Router>
   <nav>
-    <Link to="/">Home</Link>
+    <Link class="nav-link" to="/">Home</Link>
+    <Link class="nav-link" to="/readers">Readers</Link>
     {#if $user.name}
       <Link class="ml-auto" to="/">
         <DDM.Root>
@@ -43,6 +46,7 @@
   <div>
     <Route path="/" component={Home} />
     <Route path="/login" component={Login} />
+    <Route path="/readers" component={Readers} />
   </div>
 </Router>
 
